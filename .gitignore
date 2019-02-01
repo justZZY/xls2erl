@@ -1,2 +1,3 @@
-.x64
-.xls2erl/x64
+/x64/
+/xls2erl/x64/
+.gitignore
