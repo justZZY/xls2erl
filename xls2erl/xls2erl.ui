@@ -1,0 +1,25 @@
+<UI version="4.0" >
+ <class>xls2erlClass</class>
+ <widget class="QDialog" name="xls2erlClass" >
+  <property name="objectName" >
+   <string notr="true">xls2erlClass</string>
+  </property>
+  <property name="geometry" >
+   <rect>
+	<x>0</x>
+	<y>0</y>
+	<width>600</width>
+	<height>400</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>xls2erl</string>
+  </property>
+ </widget>
+ <layoutDefault spacing="6" margin="11" />
+ <pixmapfunction></pixmapfunction>
+ <resources>
+   <include location="xls2erl.qrc"/>
+ </resources>
+ <connections/>
+</UI>
