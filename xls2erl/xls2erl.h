@@ -19,6 +19,9 @@
 #include <qmessagebox.h>
 #include <qregexp.h>
 #include <qvalidator.h>
+#include <qsplashscreen.h>
+#include <qpalette.h>
+#include <qprocess.h>
 #include "ui_xls2erl.h"
 
 
@@ -73,4 +76,5 @@ private:
 	QRadioButton *syntaxOffBtn;
 	QButtonGroup *syntaxBtnGroup;
 	QHBoxLayout *syntaxLayout;
+	QString jsonPath;
 };

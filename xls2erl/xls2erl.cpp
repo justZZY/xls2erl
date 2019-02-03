@@ -8,6 +8,7 @@ xls2erl::xls2erl(QWidget *parent)
 	this->setWindowIcon(QIcon("Resources\\title.ico"));
 	this->resize(470, 400);
 	this->setWindowFlags(Qt::WindowCloseButtonHint | Qt::WindowMinimizeButtonHint);
+	this->setFixedSize(this->width(), this->height());
 	init();
 	showJsonKeys();
 	connect(addBtn, SIGNAL(clicked()), this, SLOT(clickChooseBtn()));
@@ -27,6 +28,7 @@ xls2erl::~xls2erl()
 void xls2erl::init()
 {
 	gridLayout = new QGridLayout(this);
+	jsonPath = "../game_server.spec";
 	okBtn = new QPushButton(QString::fromLocal8Bit("确定"));
 	comboBox = new QComboBox();
 	comboBox->setDisabled(true);
@@ -106,7 +108,7 @@ void xls2erl::init()
 
 QJsonObject xls2erl::getAllJsonObject()
 {
-	QFile file("Resources\\game_server.spec");
+	QFile file(jsonPath);
 	file.open(QIODevice::ReadOnly | QIODevice::Text);
 	QString value = file.readAll();
 	file.close();
@@ -207,7 +209,7 @@ void xls2erl::writeJson()
 		QString key = nameLineEdit->text();
 		QJsonObject writeObject;
 		jsonObject.insert(key, getInsertJsonObject(writeObject));
-		QFile file("Resources\\game_server.spec");
+		QFile file(jsonPath);
 		if (file.open(QIODevice::ReadWrite | QIODevice::Text))
 		{
 			QMessageBox::about(NULL, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("写入成功"));
