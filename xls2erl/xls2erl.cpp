@@ -29,7 +29,11 @@ void xls2erl::init()
 {
 	gridLayout = new QGridLayout(this);
 	jsonPath = "../game_server.spec";
-	okBtn = new QPushButton(QString::fromLocal8Bit("确定"));
+	okBtn = new QPushButton(QString::fromLocal8Bit("修改"));
+	genBtn = new QPushButton(QString::fromLocal8Bit("生成"));
+	btnLayout = new QHBoxLayout(this);
+	btnLayout->addWidget(okBtn);
+	btnLayout->addWidget(genBtn);
 	comboBox = new QComboBox();
 	comboBox->setDisabled(true);
 	changeBtn = new QRadioButton(QString::fromLocal8Bit("修改"));
@@ -102,7 +106,7 @@ void xls2erl::init()
 	gridLayout->addWidget(primarykeyLineEdit, 9, 2);
 	gridLayout->addWidget(syntaxLabel, 10, 1);
 	gridLayout->addLayout(syntaxLayout, 10, 2);
-	gridLayout->addWidget(okBtn, 11, 2);
+	gridLayout->addLayout(btnLayout, 11, 2);
 	this->setLayout(gridLayout);
 }
 

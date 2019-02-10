@@ -48,6 +48,8 @@ private:
 	Ui::xls2erlClass ui;
 	QGridLayout *gridLayout;
 	QPushButton *okBtn;
+	QPushButton *genBtn;
+	QHBoxLayout *btnLayout;
 	QComboBox *comboBox;
 	QRadioButton *changeBtn;
 	QRadioButton *addBtn;
