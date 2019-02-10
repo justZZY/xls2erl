@@ -43,6 +43,7 @@ public slots:
 	void getConfigPath();
 	void showSelectJsonText();
 	void writeJson();
+	void genConfig();
 
 private:
 	Ui::xls2erlClass ui;

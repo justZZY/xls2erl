@@ -17,6 +17,7 @@ xls2erl::xls2erl(QWidget *parent)
 	connect(outputFileBtn, SIGNAL(clicked()), this, SLOT(getConfigPath()));
 	connect(comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(showSelectJsonText()));
 	connect(okBtn, SIGNAL(clicked()), this, SLOT(writeJson()));
+	connect(genBtn, SIGNAL(clicked()), this, SLOT(genConfig()));
 }
 
 xls2erl::~xls2erl()
@@ -253,4 +254,16 @@ QJsonObject xls2erl::getInsertJsonObject(QJsonObject jsonObject)
 		jsonObject.insert("syntax", tr("on"));
 	}
 	return jsonObject;
+}
+
+void xls2erl::genConfig()
+{
+	QProcess process;
+	QStringList args;
+	process.setWorkingDirectory(QString::fromLocal8Bit("./Resources/导表脚本"));
+	args << "/c" << "start" << QString::fromLocal8Bit("服务器导表脚本.cmd");
+	process.start("cmd.exe", args);
+	bool flag = process.waitForStarted();
+	QString strResult = QString::fromLocal8Bit(process.readAllStandardError());
+	process.close();
 }
