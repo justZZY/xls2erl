@@ -48,7 +48,7 @@ void xls2erl::init()
 	chooseLayout->addWidget(changeBtn);
 	nameLabel = new QLabel(QString::fromLocal8Bit("文件别名："));
 	nameLineEdit = new QLineEdit();
-	nameLineEdit->setPlaceholderText(QString::fromLocal8Bit("在bash命令中用到"));
+	nameLineEdit->setPlaceholderText(QString::fromLocal8Bit("在cmd命令中用到"));
 	desLabel = new QLabel(QString::fromLocal8Bit("描述："));
 	desLineEdit = new QLineEdit();
 	desLineEdit->setPlaceholderText(QString::fromLocal8Bit("xxx配置表"));
@@ -217,7 +217,7 @@ void xls2erl::writeJson()
 		QFile file(jsonPath);
 		if (file.open(QIODevice::ReadWrite | QIODevice::Text))
 		{
-			QMessageBox::about(NULL, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("写入成功"));
+			QMessageBox::about(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("写入成功"));
 			QJsonDocument jsonDocument;
 			jsonDocument.setObject(jsonObject);
 			file.write(jsonDocument.toJson(QJsonDocument::Indented));
@@ -226,12 +226,12 @@ void xls2erl::writeJson()
 		}
 		else
 		{
-			QMessageBox::about(NULL, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("写入失败，检查是否存在文件占用问题"));
+			QMessageBox::about(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("写入失败，检查是否存在文件占用问题"));
 		}
 	}
 	else
 	{
-		QMessageBox::about(NULL, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("写入失败，检查是否存在未填写的空行"));
+		QMessageBox::about(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("写入失败，检查是否存在未填写的空行"));
 	}
 	return;
 }
@@ -260,10 +260,10 @@ void xls2erl::genConfig()
 {
 	QProcess process;
 	QStringList args;
-	process.setWorkingDirectory(QString::fromLocal8Bit("./Resources/导表脚本"));
+	process.setWorkingDirectory(QString::fromLocal8Bit("./.."));
 	args << "/c" << "start" << QString::fromLocal8Bit("服务器导表脚本.cmd");
 	process.start("cmd.exe", args);
-	bool flag = process.waitForStarted();
-	QString strResult = QString::fromLocal8Bit(process.readAllStandardError());
+	process.waitForStarted(); //等待程序启动
+	process.waitForFinished();//等待程序关闭
 	process.close();
 }

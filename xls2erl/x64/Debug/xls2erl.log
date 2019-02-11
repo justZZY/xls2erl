@@ -1,2 +1,5 @@
-﻿  xls2erl.cpp
+﻿  moc_xls2erl.cpp
+  qrc_xls2erl.cpp
+  main.cpp
+  xls2erl.cpp
   xls2erl.vcxproj -> E:\Qt_WorkSpace\xls2erl\x64\Debug\xls2erl.exe

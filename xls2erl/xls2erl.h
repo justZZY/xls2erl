@@ -22,6 +22,7 @@
 #include <qsplashscreen.h>
 #include <qpalette.h>
 #include <qprocess.h>
+#include <Windows.h>
 #include "ui_xls2erl.h"
 
 
